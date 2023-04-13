@@ -9,4 +9,5 @@ import Foundation
 
 protocol NetworkServiceProtocol {
   func getBooksListData(completion: @escaping (Result<BooksListModel, Error>) -> Void)
+  func getRatingData(urlRating: String, completion: @escaping (Result<RatingModel, Error>) -> Void)
 }

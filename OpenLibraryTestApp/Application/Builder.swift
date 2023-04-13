@@ -9,10 +9,13 @@ import UIKit
 
 final class Builder {
 
-  static func createBooksModule() -> UIViewController {
+  static func createBooksModule() -> UINavigationController {
+    let navigationController = UINavigationController()
     let networkService = NetworkService()
     let viewModel = BooksListViewModel(networkService: networkService)
     let view = BooksListViewController(viewModel: viewModel)
-    return view
+    navigationController.viewControllers =
+    [view]
+    return navigationController
   }
 }

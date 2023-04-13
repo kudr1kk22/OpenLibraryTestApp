@@ -16,6 +16,10 @@
 		D95AAA7329E833CC007CB206 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95AAA7229E833CC007CB206 /* NetworkServiceProtocol.swift */; };
 		D95AAA7629E837C7007CB206 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95AAA7529E837C7007CB206 /* Builder.swift */; };
 		D95AAA7B29E8564F007CB206 /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95AAA7A29E8564F007CB206 /* BooksTableViewCell.swift */; };
+		D9AB7CDB29E86E7E000BF4E4 /* DetailsBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AB7CDA29E86E7E000BF4E4 /* DetailsBookViewController.swift */; };
+		D9AB7CDE29E881BE000BF4E4 /* RatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AB7CDD29E881BE000BF4E4 /* RatingModel.swift */; };
+		D9AB7CE029E89E7F000BF4E4 /* DetailsBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AB7CDF29E89E7F000BF4E4 /* DetailsBookViewModel.swift */; };
+		D9AB7CE229E8B0BF000BF4E4 /* DetailsBookViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AB7CE129E8B0BF000BF4E4 /* DetailsBookViewModelProtocol.swift */; };
 		D9DE3E1229E8248100C747D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE3E1129E8248100C747D6 /* AppDelegate.swift */; };
 		D9DE3E1429E8248100C747D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE3E1329E8248100C747D6 /* SceneDelegate.swift */; };
 		D9DE3E1629E8248100C747D6 /* BooksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE3E1529E8248100C747D6 /* BooksListViewController.swift */; };
@@ -35,6 +39,10 @@
 		D95AAA7529E837C7007CB206 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		D95AAA7929E83C44007CB206 /* BooksListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BooksListModel.swift; path = ../../../../../../../Documents/BooksListModel.swift; sourceTree = "<group>"; };
 		D95AAA7A29E8564F007CB206 /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
+		D9AB7CDA29E86E7E000BF4E4 /* DetailsBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBookViewController.swift; sourceTree = "<group>"; };
+		D9AB7CDD29E881BE000BF4E4 /* RatingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingModel.swift; sourceTree = "<group>"; };
+		D9AB7CDF29E89E7F000BF4E4 /* DetailsBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBookViewModel.swift; sourceTree = "<group>"; };
+		D9AB7CE129E8B0BF000BF4E4 /* DetailsBookViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBookViewModelProtocol.swift; sourceTree = "<group>"; };
 		D9DE3E0E29E8248100C747D6 /* OpenLibraryTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenLibraryTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9DE3E1129E8248100C747D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9DE3E1329E8248100C747D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +71,6 @@
 				64CCCCA485B5914048B393C3 /* Pods-OpenLibraryTestApp.debug.xcconfig */,
 				FAD8704633104213A2986CA7 /* Pods-OpenLibraryTestApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -88,9 +95,44 @@
 		D95AAA7729E83C37007CB206 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D9AB7CDD29E881BE000BF4E4 /* RatingModel.swift */,
 				D95AAA7929E83C44007CB206 /* BooksListModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D9AB7CD829E86CC0000BF4E4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D95AAA7A29E8564F007CB206 /* BooksTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D9AB7CD929E86CC6000BF4E4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D95AAA6929E82E63007CB206 /* BooksListVMProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D9AB7CDC29E86F5C000BF4E4 /* DetailsBookViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D9AB7CDA29E86E7E000BF4E4 /* DetailsBookViewController.swift */,
+				D9AB7CDF29E89E7F000BF4E4 /* DetailsBookViewModel.swift */,
+				D9AB7CE329E8B0C7000BF4E4 /* Protocols */,
+			);
+			path = DetailsBookViewController;
+			sourceTree = "<group>";
+		};
+		D9AB7CE329E8B0C7000BF4E4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D9AB7CE129E8B0BF000BF4E4 /* DetailsBookViewModelProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		D9DE3E0529E8248100C747D6 = {
@@ -137,6 +179,7 @@
 		D9DE3E2629E8257700C747D6 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				D9AB7CDC29E86F5C000BF4E4 /* DetailsBookViewController */,
 				D9DE3E2729E8258100C747D6 /* BooksListViewController */,
 			);
 			path = MainModule;
@@ -149,8 +192,8 @@
 				D95AAA7729E83C37007CB206 /* Models */,
 				D95AAA6B29E82EB6007CB206 /* BooksListModel.swift */,
 				D95AAA6729E82E3B007CB206 /* BooksListViewModel.swift */,
-				D95AAA7A29E8564F007CB206 /* BooksTableViewCell.swift */,
-				D95AAA6929E82E63007CB206 /* BooksListVMProtocol.swift */,
+				D9AB7CD829E86CC0000BF4E4 /* Cells */,
+				D9AB7CD929E86CC6000BF4E4 /* Protocols */,
 			);
 			path = BooksListViewController;
 			sourceTree = "<group>";
@@ -279,9 +322,13 @@
 			files = (
 				D95AAA7129E82F49007CB206 /* EndPointType.swift in Sources */,
 				D95AAA6E29E82F1A007CB206 /* NetworkService.swift in Sources */,
+				D9AB7CE029E89E7F000BF4E4 /* DetailsBookViewModel.swift in Sources */,
+				D9AB7CDB29E86E7E000BF4E4 /* DetailsBookViewController.swift in Sources */,
+				D9AB7CDE29E881BE000BF4E4 /* RatingModel.swift in Sources */,
 				D9DE3E1629E8248100C747D6 /* BooksListViewController.swift in Sources */,
 				D95AAA6829E82E3B007CB206 /* BooksListViewModel.swift in Sources */,
 				D95AAA6A29E82E63007CB206 /* BooksListVMProtocol.swift in Sources */,
+				D9AB7CE229E8B0BF000BF4E4 /* DetailsBookViewModelProtocol.swift in Sources */,
 				D95AAA7329E833CC007CB206 /* NetworkServiceProtocol.swift in Sources */,
 				D95AAA7B29E8564F007CB206 /* BooksTableViewCell.swift in Sources */,
 				D9DE3E1229E8248100C747D6 /* AppDelegate.swift in Sources */,

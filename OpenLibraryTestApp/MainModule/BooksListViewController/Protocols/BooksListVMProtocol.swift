@@ -10,4 +10,6 @@ import Foundation
 protocol BooksListVMProtocol {
   var booksListModel: BooksListModel { get }
   var complitionHandler: (() -> Void)? { get set }
+  var ratingModel: RatingModel { get }
+  func loadBookDetails(indexPath: String)
 }

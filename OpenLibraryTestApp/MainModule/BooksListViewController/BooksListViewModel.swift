@@ -12,6 +12,7 @@ final class BooksListViewModel: BooksListVMProtocol {
   //MARK: - Properties
 
   var booksListModel = BooksListModel()
+  var ratingModel = RatingModel()
   private let networkService: NetworkServiceProtocol
   var complitionHandler: (() -> Void)?
 
@@ -31,6 +32,18 @@ final class BooksListViewModel: BooksListVMProtocol {
         self.complitionHandler?()
       case .failure(let error):
         print(error.localizedDescription)
+      }
+    }
+  }
+
+  func loadBookDetails(indexPath: String) {
+    guard let index = booksListModel[indexPath]?.details.works.first?.key else { return }
+    networkService.getRatingData(urlRating: index) { result in
+      switch result {
+      case .success(let rating):
+        self.ratingModel = rating
+      case .failure(let error):
+        print(error)
       }
     }
   }

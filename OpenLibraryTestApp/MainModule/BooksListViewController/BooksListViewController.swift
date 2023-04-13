@@ -33,6 +33,7 @@ final class BooksListViewController: UIViewController {
     bind()
     setConstraints()
     registerCells()
+    setNavController()
   }
 
   //MARK: - Binding
@@ -42,6 +43,12 @@ final class BooksListViewController: UIViewController {
       print("Content updated")
       self.fetchData()
     }
+  }
+
+  //MARK: - Set navigation Controller
+
+  private func setNavController() {
+    self.title = "Books List"
   }
 
   //MARK: - Setup TableView
@@ -58,7 +65,6 @@ final class BooksListViewController: UIViewController {
   private func registerCells() {
     tableView.register(BooksTableViewCell.self, forCellReuseIdentifier: String(describing: BooksTableViewCell.self))
   }
-
 }
 
 //MARK: -  Fetch Data
@@ -97,7 +103,16 @@ extension BooksListViewController: UITableViewDataSource {
 extension BooksListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
+    let bookIndex = viewModel.booksListModel.keys.sorted()[indexPath.row]
+    viewModel.loadBookDetails(indexPath: bookIndex)
 
+    let detailsVM = DetailsBookViewModel()
+    detailsVM.ratingModel = viewModel.ratingModel
+    let view = DetailsBookViewController(viewModel: detailsVM)
+    if let book = viewModel.booksListModel[bookIndex] {
+      view.configure(model: book)
+    }
+    navigationController?.pushViewController(view, animated: true)
   }
 }
 

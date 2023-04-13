@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class BooksTableViewCell: UITableViewCell {
 
@@ -45,9 +46,11 @@ final class BooksTableViewCell: UITableViewCell {
   func configure(from model: Book) {
     titleLabel.text = model.details.title
     releaseDate.text = "Release date: \(model.details.publishDate)"
+    guard let image = model.thumbnailURL else { return }
+    if let imageURL = URL(string: image) {
+      bookImageView.sd_setImage(with: imageURL)
+    }
   }
-
-
 }
 
 //MARK: - Constraints
@@ -78,6 +81,5 @@ extension BooksTableViewCell {
       releaseDate.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
       releaseDate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16.0)
     ])
-
   }
 }
