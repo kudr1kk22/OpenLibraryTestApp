@@ -81,17 +81,17 @@ extension BooksListViewController {
 
 extension BooksListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel.booksListModel.count
+    return viewModel.booksListModel?.count ?? 0
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BooksTableViewCell.self), for: indexPath) as? BooksTableViewCell else {
       return UITableViewCell()
     }
+    
+    guard let bookIndex = viewModel.booksListModel?.keys.sorted()[indexPath.row] else { return cell }
 
-    let bookIndex = viewModel.booksListModel.keys.sorted()[indexPath.row]
-
-    if let book = viewModel.booksListModel[bookIndex] {
+    if let book = viewModel.booksListModel?[bookIndex] {
       cell.configure(from: book)
     }
     return cell
@@ -103,13 +103,13 @@ extension BooksListViewController: UITableViewDataSource {
 extension BooksListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    let bookIndex = viewModel.booksListModel.keys.sorted()[indexPath.row]
+    guard let bookIndex = viewModel.booksListModel?.keys.sorted()[indexPath.row] else { return }
     viewModel.loadBookDetails(indexPath: bookIndex)
 
     let detailsVM = DetailsBookViewModel()
     detailsVM.ratingModel = viewModel.ratingModel
     let view = DetailsBookViewController(viewModel: detailsVM)
-    if let book = viewModel.booksListModel[bookIndex] {
+    if let book = viewModel.booksListModel?[bookIndex] {
       view.configure(model: book)
     }
     navigationController?.pushViewController(view, animated: true)
