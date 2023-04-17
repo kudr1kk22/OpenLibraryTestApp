@@ -11,8 +11,8 @@ final class BooksListViewModel: BooksListVMProtocol {
 
   //MARK: - Properties
 
-  var booksListModel = BooksListModel()
-  var ratingModel = RatingModel()
+  var booksListModel: BooksListModel?
+  var ratingModel: RatingModel?
   private let networkService: NetworkServiceProtocol
   var complitionHandler: (() -> Void)?
 
@@ -23,6 +23,7 @@ final class BooksListViewModel: BooksListVMProtocol {
     loadBooksListData()
   }
 
+  //MARK: - Load books list
 
   func loadBooksListData() {
     networkService.getBooksListData { result in
@@ -36,8 +37,10 @@ final class BooksListViewModel: BooksListVMProtocol {
     }
   }
 
+  //MARK: - Load book details
+
   func loadBookDetails(indexPath: String) {
-    guard let index = booksListModel[indexPath]?.details.works.first?.key else { return }
+    guard let index = booksListModel?[indexPath]?.details.works.first?.key else { return }
     networkService.getRatingData(urlRating: index) { result in
       switch result {
       case .success(let rating):
@@ -47,7 +50,4 @@ final class BooksListViewModel: BooksListVMProtocol {
       }
     }
   }
-
-
-
 }
